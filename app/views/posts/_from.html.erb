@@ -1,0 +1,21 @@
+
+
+
+<%= form_for :post , url: posts_url do |f| %>
+    <div class="mt-5">
+        <input name="post[group_id]" type="hidden" value="<%= @group.id %>" />
+    </div>
+
+    <div class="mb-4">
+        <input name="post[title]" type="text" class="w-full"  placeholder="Title of Post"/>
+    </div>
+   
+    <div class="mb-4">
+        <textarea name="post[description]" class="w-full">  </textarea>
+    </div>
+       
+    <div class="w-50">
+        <%= f.submit "Save" , class: "bg-primary text-white"%>
+    </div>
+<% end %>
+

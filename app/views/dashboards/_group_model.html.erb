@@ -1,0 +1,35 @@
+
+
+
+
+
+<div data-controller="modal" data-modal-allow-background-close="true">
+  <a href="#" data-action="click->modal#open" class="bg-blue font-bold py-3 px-6 rounded">
+   +  <span>Create A New Group</span>
+  </a>
+
+  <!-- Modal Container -->
+  <div data-modal-target="container" data-action="click->modal#closeBackground keyup@window->modal#closeWithKeyboard" class="hidden animated fadeIn fixed inset-0 overflow-y-auto flex items-center justify-center" style="z-index: 9999;">
+    <!-- Modal Inner Container -->
+    <div class="max-h-screen w-full max-w-lg relative">
+      <!-- Modal Card -->
+      <div class="m-1 bg-white rounded shadow text-left">
+        <div class="p-8">
+
+          <h2 class="text-xl mb-4">Create Group </h2>
+
+          <%= form_for 'group', url: groups_url, method: :post  do |f| %>
+            <div class="">
+                Group Name: <input name="group[name]" class="input" placeholder="Group Name" required/>
+            </div>
+
+            <div class="flex justify-start items-center flex-wrap mt-6">
+                <button class="bg-primary text-white font-bold py-2 px-4 rounded my-2 ml-2" data-action="click->modal#close">Close</button>
+                <button class="bg-primary text-white font-bold py-2 px-4 rounded my-2 ml-2" type="submit">Create</button>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,29 @@
+
+
+
+
+<div class="post p-5 ml-5 mr-5">
+
+    <div class="mb-4 text-3xl bold">
+        <%= @post.title %>
+    </div>
+
+    <div class="content">
+        <%= @post.description %>
+    </div>
+
+
+    <div class="comments mt-6 pt-5">
+        <div class="mb-4 text-3xl bold">
+            Comments
+        </div>
+
+
+    </div>
+
+
+    <div class="create-comments">
+        <%= render "comments/form" %>
+    </div>
+
+</div>

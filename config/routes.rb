@@ -6,6 +6,7 @@ Rails.application.routes.draw do
 
   get '/joined/groups' => "groups#joined_group"
   get '/my/groups' => "groups#my_group"
+  get '/joined' => "groups#joined"
 
   resource :welcomes 
   resources :groups 

@@ -1,0 +1,23 @@
+
+<div class="h-screen w-full">
+  <% @groups.each do |group| %>
+      <div class="flex">
+          <div class="wd-80 group-row">
+              <%= group.name %>
+          </div>
+
+          <div class="wd-20 group-row text-center">
+            <% if !is_joined(group).blank? %>
+              Joined
+            <% else %>
+           
+                <div  class='btn-join' >
+                  <a href="<%= joined_url(id: group.id) %>">
+                    Join
+                  </a>
+                </div>
+            <% end %>   
+          </div>
+      </div>    
+  <% end %>    
+</div>

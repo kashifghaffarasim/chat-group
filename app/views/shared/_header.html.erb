@@ -1,0 +1,12 @@
+
+<div class="flex justify-end">
+
+    <div class="w-24 active">
+       <%= link_to "Groups", "/groups" %>
+    </div>
+
+    <div class="w-24">
+        <%= link_to "Logout", destroy_user_session_url , data: { turbo_method: :delete } %>
+    </div>
+
+</div>

@@ -1,0 +1,18 @@
+
+<div class="h-screen w-full">
+  <% @groups.each do |group| %>
+      <div class="flex">
+          <div class="wd-80 group-row">
+              <%= group.name %>
+          </div>
+
+          <div class="wd-20 group-row text-center ">
+            <div class="btn-main">
+                <a href="<%= posts_url(group_id: group.id) %>">
+                    Post 
+                </a>
+             </div>
+          </div>
+      </div>    
+  <% end %>    
+</div>

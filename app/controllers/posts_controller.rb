@@ -1,9 +1,10 @@
 class PostsController < ApplicationController
 
-    before_action :get_post, only: [:show, :destory]
+    before_action :get_group, only: [:index]
+    before_action :get_post, only: [:show, :destroy]
 
     def index 
-        @posts = Post.all
+        @posts = @group.posts.all
     end 
 
     def new 
@@ -11,9 +12,10 @@ class PostsController < ApplicationController
     end 
 
     def create 
-        @post = Post.new(post_params)
+        @post = current_user.posts.new(post_params)
+        
         if @post.save 
-            redirect_to posts_url 
+            redirect_to posts_url(group_id: @post.group_id)
         else 
             render :new
         end
@@ -31,21 +33,24 @@ class PostsController < ApplicationController
         end
     end 
 
-    def destory 
-        
-        if @post.destory  
-            redirect_to posts_url 
+    def destroy 
+        if @post.destroy  
+            redirect_to posts_url(group_id: params[:group_id])
         end
     end 
 
     private 
 
     def post_params 
-        params.require(:comment).permit(:text, :post_id, :user_id, :comment_id)
+        params.require(:post).permit(:title, :description, :group_id)
     end 
 
     def get_post 
         @post = Post.find_by_id(params[:id])
     end 
+
+    def get_group
+        @group = Group.find_by_id(params[:group_id])
+    end
 end
 
