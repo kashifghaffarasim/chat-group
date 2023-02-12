@@ -11,9 +11,10 @@ class CommentsController < ApplicationController
     end 
 
     def create 
-        @comment = Comment.new(comment_params)
+        @comment = current_user.comments.new(comment_params)
+        
         if @comment.save 
-            redirect_to posts_url 
+            redirect_to post_url(id: params[:comment][:post_id]) 
         else 
             render :new
         end
@@ -41,7 +42,7 @@ class CommentsController < ApplicationController
     private 
 
     def comment_params 
-        params.require(:comment).permit(:text, :post_id, :user_id, :comment_id)
+        params.require(:comment).permit(:text, :post_id, :comment_id)
     end 
 
     def get_comment 

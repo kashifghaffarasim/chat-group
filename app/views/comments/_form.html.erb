@@ -1,0 +1,19 @@
+
+
+<div class="mt-5 mb-5 wd-80" >
+        <div>
+            <h1>  New Comment </h1>
+        </div>
+    <%= form_for :comment, url: comments_url do |f| %>
+        <input type="hidden" name="comment[post_id]" value="<%= @post.id %>" %>
+        <div class="w-full">
+            <textarea name="comment[text]"  style="width: 100%;"> </textarea>
+        </div>
+
+        <div class="w-80" style="width: 400px">
+            <%= f.submit "Save", class: "bg-primary text-white" %>
+        </div>
+
+    <% end %>
+
+</div>

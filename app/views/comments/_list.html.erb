@@ -1,0 +1,17 @@
+
+
+
+<div>
+    <% @post.comments.each do |comment| %>
+        <div class="mt-5 mb-5 pt-5 pb-5">
+            <div>
+                <%= comment.text %> 
+            </div>
+
+            <div>
+                Name: <%= comment.user.try(:email)%>
+                Date: <%= comment.created_at %>
+            </div>
+        </div>
+     <% end %>   
+</div>
